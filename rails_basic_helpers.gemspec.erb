@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.specification_version = 2 if s.respond_to? :specification_version=
 
-  s.files = <%= FileList['lib/**/*.rb', 'README', 'doc/**/*.*'].inspect %>
+  s.files = <%= FileList['lib/**/*.rb', 'rails/**/*.rb', 'README', 'doc/**/*.*'].inspect %>
 
   s.require_paths = <%= FileList['lib/**'].inject(['lib']) do |require_paths,path|
     require_paths << path if File.directory?(path) && !require_paths.include?(path)
