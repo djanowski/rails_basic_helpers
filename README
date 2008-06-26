@@ -1,1 +1,80 @@
 A Ruby on Rails plugin providing some super simple helpers.
+
+=== Examples
+
+  rows = 
+  [
+    %w{John john@domain.com}, 
+    %w{Doe doe@domain.com}
+  ]
+  
+  table(rows)
+  
+  # <table>
+  #   <tr>
+  #     <td>John</td>
+  #     <td>john@domain.com</td>
+  #   </tr>
+  #   <tr>
+  #     <td>Doe</td>
+  #     <td>doe@domain.com</td>
+  #   </tr>
+  # </table>
+  
+  table([%w{Name E-mail}] + rows, :headers => true)
+  table(rows, :headers => %w{Name E-mail})
+  
+  # <table>
+  #   <thead>
+  #     <tr>
+  #       <th>Name</th>
+  #       <th>E-mail</th>
+  #     </tr>
+  #   </thead>
+  #   <tr>
+  #     <td>John</td>
+  #     <td>john@domain.com</td>
+  #   </tr>
+  #   <tr>
+  #     <td>Doe</td>
+  #     <td>doe@domain.com</td>
+  #   </tr>
+  # </table>
+
+  @people = 
+  [
+    Person.new('John', 'john@domain.com'), 
+    Person.new('Doe', 'doe@domain.com')
+  ]
+
+  table(:people, %w{name email})
+
+  # <table>
+  #   <tr>
+  #     <td>John</td>
+  #     <td>john@domain.com</td>
+  #   </tr>
+  #   <tr>
+  #     <td>Doe</td>
+  #     <td>doe@domain.com</td>
+  #   </tr>
+  # </table>
+
+  table(rows, [:name, :email], :headers => true)
+
+  # <table>
+  #   <thead>
+  #     <tr>
+  #       <th>Name</th>
+  #       <th>Email</th>
+  #     </tr>
+  #   </thead>
+  #   <tr>
+  #     <td>John</td>
+  #     <td>john@domain.com</td>
+  #   </tr>
+  #   <tr>
+  #     <td>Doe</td>
+  #     <td>doe@domain.com</td>
+  #   </tr>
+  # </table>
