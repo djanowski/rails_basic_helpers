@@ -125,4 +125,32 @@ module BasicHelpers
 
     table(rows, options)
   end
+  
+  def ul(items, options = {}, &block)
+    return nil if items.blank?
+
+    tag = options.delete(:tag) || :ul
+
+    contents = if block_given?
+      items.inject([]) do |html,item|
+        html << content_tag(:li, *yield(item))
+      end.join("\n")
+    else
+      "\n<li>#{items.join("</li>\n<li>")}</li>\n"
+    end
+
+    content_tag(tag, contents, options)
+  end
+
+  def ol(items, options = {}, &block)
+    ul(items, options.merge(:tag => :ol), &block)
+  end
+
+  def dl(items, options = {}, &block)
+    return nil if items.blank?
+
+    items = items.map(&block) if block_given?
+
+    content_tag(:dl, items.inject('') {|html,item| content_tag(:dt, item.first) + content_tag(:dd, item.last) }, options)
+  end
 end
