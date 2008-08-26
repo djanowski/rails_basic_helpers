@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'rails_basic_helpers'
-  s.version = '0.0.3'
+  s.version = '0.0.4'
   s.summary = %{rails_basic_helpers}
   s.description = %{}
   s.date = %q{2008-06-25}
